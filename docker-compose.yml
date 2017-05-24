@@ -1,0 +1,49 @@
+version: '2'
+services:
+    # Application container
+    app:
+        build: .
+        ports:
+            - "8080:8080" 
+        links:            
+            # comment out to switch to postgres
+            # - postgres            
+            - mongodb
+        environment:
+            DEBUG: 'true'
+            PORT: '8080'        
+    
+    ## comment out to load postgres image if app links postgres
+    # postgres:
+    #     image: onjin/alpine-postgres:9.5
+    #     restart: unless-stopped
+    #     ports:
+    #         - "5432:5432"
+    #     environment:
+    #         LC_ALL: C.UTF-8
+    #         POSTGRES_USER: hellofresh
+    #         POSTGRES_PASSWORD: hellofresh
+    #         POSTGRES_DB: hellofresh
+    
+    mongodb:
+        image: mvertes/alpine-mongo:3.2.3
+        restart: unless-stopped
+        ports:
+            - "27017:27017"        
+        # networks:
+        #     mongo_net:
+        #         ipv4_address: 172.16.0.2
+        # command: mongod --bind_ip 127.0.0.1,172.16.0.2
+
+## todo
+## somehow mongodb driver can't access 127.0.0.1:27017 in docker container, but I can access 127.0.0.1:27017 by mongo shell when container starts up..
+## so I tried to bind mongod ip to a staitic ip and to access the static ip instead of localhost, but still failed..
+## I have to docker inspect the mongo container and check the container ip and hardcode it in config.json.. which is very ugly.. But right now I don't know what kind of issue it is and how to solve it.
+## Maybe it is a docker + windows issue, or my vpn setting issue (I am using vpn since I am now in China), or mongo image issue or mongo driver issue..
+# networks:
+#   mongo_net:
+#     driver: bridge
+#     ipam:
+#       config:
+#       - subnet: 172.16.0.0/24
+#         gateway: 172.16.0.254

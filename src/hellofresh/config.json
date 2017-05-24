@@ -1,0 +1,21 @@
+{
+    "db": {
+        "prod": {            
+            "host": "mongodb",
+            "server": "172.19.0.2",            
+            "port": "27017",
+            "dbname": "hellofresh"
+        },
+        "test": {
+            "host": "mongodb",
+            "server": "172.19.0.2",
+            "port": "27017",
+            "dbname": "hellofresh"
+        }
+    },
+    "auth": {
+        "type": "basic",
+        "username": "hellofresh",
+        "password": "hellofresh"
+    }
+}

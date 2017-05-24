@@ -1,0 +1,25 @@
+{
+    "db": {
+        "prod": {            
+            "host": "postgres",
+            "server": "172.19.0.2",            
+            "port": "5432",
+            "dbname": "hellofresh",
+            "username": "hellofresh",
+            "password": "hellofresh"
+        },
+        "test": {
+            "host": "postgres",
+            "server": "172.19.0.2",
+            "port": "5432",
+            "dbname": "hellofresh",
+            "username": "hellofresh",
+            "password": "hellofresh"
+        }
+    },
+    "auth": {
+        "type": "basic",
+        "username": "hellofresh",
+        "password": "hellofresh"
+    }
+}
