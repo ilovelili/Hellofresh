@@ -1,4 +1,4 @@
-# HelloFresh Senior Backend Developer Test
+# HelloFresh Recipe API
 
 ## Technology
 * go 1.7
